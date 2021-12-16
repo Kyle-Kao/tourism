@@ -1,0 +1,31 @@
+.Firstselect{
+  background-color: $txt-color;
+  @include sz(100%, 100vh);
+  position: relative;
+  &-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    @include sz(50rem, 56rem);
+    background-color: $light-colorbg;
+    border-radius: 2rem;
+    box-shadow: 0 1rem 1rem $shadow-color;
+    @include flexCenter;
+    flex-direction: column;
+  }
+  .area{
+    width: 30rem;
+    #city{
+      color: $txt-darkcolor;;
+      appearance: none;
+      width: 100%;
+      border-radius: 1rem;
+      background-color: $light-colorbg;
+      padding: 1rem;
+      font-size: 2rem;
+      border: none;
+      box-shadow: inset 0 1px 0 #ffffff,0 .5rem .5rem $shadow-color;
+    }
+  }
+}

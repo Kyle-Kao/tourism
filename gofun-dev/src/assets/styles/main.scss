@@ -1,0 +1,25 @@
+$txt-color: #C5C0AF;
+$txt-darkcolor: #707070;
+$light-colorbg: #E1DED0;
+$shadow-color: #B0A18F;
+
+@mixin sz($w:$w, $h:$w) {
+  width: $w;
+  height: $h;
+}
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+html{
+  font-size: 10px;
+}

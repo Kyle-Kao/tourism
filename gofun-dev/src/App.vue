@@ -1,30 +1,18 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="Firstselect">
+    <div class="Firstselect-box">
+      <div class="area">
+        <select name="city" id="city">
+          <option value="0">— choose an option —</option>
+          <option value="0">台北</option>
+          <option value="0">高雄</option>
+          <option value="0">桃園</option>
+        </select>
+      </div>
+    </div>
   </div>
-  <router-view/>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+  @import "@/assets/styles/Firstselect/_index.scss";
 </style>

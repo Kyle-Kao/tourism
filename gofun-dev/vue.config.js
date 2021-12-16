@@ -6,5 +6,12 @@ module.exports = {
       filename: "index.html"
     }
   },
+  css: {
+    loaderOptions:{
+      sass: {
+        additionalData: `@import "@/assets/styles/main.scss";`
+      }
+    }
+  },
   publicPath: "./"
 };
