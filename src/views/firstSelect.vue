@@ -8,7 +8,7 @@
           <option value="0">高雄</option>
           <option value="0">桃園</option>
         </select>
-        <fontAwesomeIcon icon="chevron-down"/>
+        <font-awesome-icon icon="chevron-down"/>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 module.exports = {
-  outputDir: "../gofun/",
+  outputDir: "./gofun/",
   pages: {
     index: {
       entry: "src/main.js",
