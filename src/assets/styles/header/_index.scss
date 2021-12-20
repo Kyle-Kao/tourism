@@ -1,0 +1,15 @@
+.header{
+  background-color: $light-colorbg;
+  box-shadow: 0 .5rem 1rem $shadow-color;
+  @include sz(100%, 8rem);
+  @include flexCenter;
+  justify-content: flex-start;
+  padding-left: 4rem;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  .icon{
+    @include sz(5rem);
+    background: url(~@/assets/img/icon.svg) no-repeat center ;
+  }
+}
