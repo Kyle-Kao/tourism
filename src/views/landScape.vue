@@ -1,4 +1,5 @@
 <template>
+  <router-view></router-view>
   <div>
     <Header></Header>
     <div class="landscape">
@@ -22,25 +23,13 @@
         </div>
         <div class="situation2">
           <div class="search">
-            <input type="text" placeholder="關鍵字查詢..." class="search-box">
-            <div class="search-icon"><font-awesome-icon icon="search" class="icon"/></div>
+            <input type="text" placeholder="關鍵字查詢..." class="search-box" />
+            <div class="search-icon"><font-awesome-icon icon="search" class="icon" /></div>
           </div>
           <div class="data">共 <span>365</span> 筆資料</div>
         </div>
         <div class="situation3">
-          <div class="card">
-            <div class="img">
-              <img src="" alt="">
-            </div>
-            <div class="textbox">
-              <div class="where"></div>
-              <div class="describe"></div>
-              <div class="booking"></div>
-              <div class="phone">
-                <img src="" alt="">
-              </div>
-            </div>
-          </div>
+          <ScapeCard></ScapeCard>
         </div>
       </div>
     </div>
@@ -53,9 +42,11 @@
 
 <script>
 import header from '@/components/header.vue';
+import scapeCard from '@/components/scapeCard.vue';
 export default {
   components: {
     Header: header,
+    ScapeCard: scapeCard,
   },
 };
 </script>
