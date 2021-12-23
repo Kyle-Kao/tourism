@@ -2,17 +2,15 @@
   <div class="Firstselect">
     <div class="Firstselect-box">
       <div class="area">
-        <select name="city" id="city">
+        <select name="city" id="city" @change="showValue({city:this.$refs.city})" ref="city">
           <option value="0">— choose an option —</option>
-          <option value="0">台北</option>
-          <option value="0">高雄</option>
-          <option value="0">桃園</option>
+          <option :value="cityData.value" v-for="cityData in cityDatas" :key="cityData.name" v-html="cityData.name"></option>
         </select>
-        <font-awesome-icon icon="chevron-down" class="icon"/>
+        <font-awesome-icon icon="chevron-down" class="icon" />
       </div>
       <div class="search">
-        <input type="text" class="search-box" placeholder="Search…">
-        <div class="search-icon"><font-awesome-icon icon="search" class="icon"/></div>
+        <input type="text" class="search-box" placeholder="Search…" />
+        <div class="search-icon"><font-awesome-icon icon="search" class="icon" /></div>
       </div>
       <div class="category">
         <h2>Category…</h2>
@@ -28,5 +26,17 @@
 </template>
 
 <style lang="scss">
-  @import "@/assets/styles/Firstselect/_index.scss";
+@import '@/assets/styles/Firstselect/_index.scss';
 </style>
+
+<script>
+  import { mapGetters, mapActions } from 'vuex';
+export default {
+  computed: {
+    ...mapGetters('city',['cityDatas'])
+  },
+  methods: {
+    ...mapActions('city',['showValue'])
+  },
+};
+</script>

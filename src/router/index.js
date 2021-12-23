@@ -10,13 +10,11 @@ const routes = [
     path: '/landscape',
     name: 'landscape',
     component: () => import('../views/landScape.vue'),
-    children: [
-      {
-        path: ':place',
-        name: 'place',
-        component: () => import('../views/place.vue'),
-      },
-    ],
+  },
+  {
+    path: '/landscape/:place',
+    name: 'place',
+    component: () => import('../views/place.vue'),
   },
   {
     path: '/food',

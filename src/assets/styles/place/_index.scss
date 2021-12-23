@@ -1,3 +1,135 @@
-h2{
-  color: red;
+.place {
+  padding: 8rem 0 7rem;
+  background-color: $light-colorbg;
+  @include sz(100%, 100vh);
+  &-container {
+    max-width: 120rem;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #efe9e5, #ded9c8);
+    margin: 3rem auto 0;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem $shadow-color;
+    padding: 2rem 5rem 4rem;
+    overflow: hidden;
+    @include flexCenter;
+    align-items: flex-start;
+    .left {
+      flex: 55%;
+      .title {
+        @include flexCenter;
+        justify-content: flex-start;
+        h2 {
+          font-size: 3.2rem;
+          color: $txt-darkcolor;
+          font-weight: normal;
+        }
+        .stag{
+          font-size: 2rem;
+          color: $txt-darkcolor;
+          margin-left: 3rem;
+          box-shadow: inset 0 1px 0 #ffffff, 0 0.5rem 0.5rem $shadow-color;
+          border-radius: 2rem;
+          padding: .5rem 1rem;
+        }
+      }
+      img{
+        @include sz(100%,38rem);
+        margin-top: 2rem;
+      }
+      .line{
+        @include sz(6rem , .3rem);
+        background-color: nth($btn-colors, 1);
+        margin-top: 2rem;
+      }
+      .txtbox{
+        font-size: 2rem;
+        color: $txt-darkcolor;
+        margin-top: 2rem;
+        @include sz(100%,30vh);
+        overflow: scroll;
+      }
+    }
+    .right {
+      flex: 45%;
+      margin-left: 1rem;
+      .tag{
+        font-size: 2.4rem;
+        color: $txt-darkcolor;
+        box-shadow: inset 0 .3rem 0 #ffffff, 0 .2rem 0.5rem $shadow-color;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+      }
+      ul{
+        border: 1px solid $shadow-color;
+        box-shadow: .5rem .2rem .5rem $shadow-color;
+        height: 65vh;
+        overflow-y: scroll;
+        li{
+          padding: 2.5rem 1.5rem;
+          @include flexCenter;
+          border: 1px solid $shadow-color;
+          img{
+            flex: 50%;
+            height: 19rem;
+          }
+          .info{
+            flex: 50%;
+            margin-left: 1rem;
+            color: $txt-color;
+            @include flexCenter;
+            flex-direction: column;
+            align-items: flex-start;
+            .where{
+              font-size: 2.4rem;
+            }
+            .stag{
+              box-shadow: inset 0 .1rem 0 #ffffff, 0 .2rem 0.5rem $shadow-color;
+              padding: .5rem;
+              border-radius: 1rem;
+              margin: 1rem 0;
+            }
+            .des{
+              font-size: 1.8rem;
+            }
+            .detail{
+              font-size: 1.4rem;
+              align-self: flex-end;
+              margin-top: 1rem;
+              cursor: pointer;
+            }
+          }
+          &:hover{
+            box-shadow: 0 .5rem .5rem $shadow-color;
+            .info{
+              color: $txt-darkcolor;
+            }
+          }
+        }
+      }
+      .btnbox{
+        @include flexCenter;
+        button{
+          font-size: 2rem;
+          padding: 1rem 3rem;
+          box-shadow: inset 0 .2rem 0 #ffffff, 0 .2rem 0.5rem $shadow-color;
+          border-radius: 2rem;
+          border: none;
+          margin-top: 3rem;
+          color: $txt-color;
+          cursor: pointer;
+          background-image: linear-gradient(to bottom, #efe9e5, #ded9c8);
+          &:hover{
+            color: $txt-darkcolor;
+            box-shadow: inset 0 .2rem 0 #ffffff, 0 .5rem 0.5rem $shadow-color;
+          }
+        }
+        button+button{
+          margin-left: 4rem;
+        }
+      }
+    }
+  }
 }
