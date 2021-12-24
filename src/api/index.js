@@ -19,6 +19,7 @@ const GetAuthorizationHeader = () => {
 
 //  封裝get方法
 export function get(api,params) {
+  console.log(api)
   return new Promise((resolve, reject) => {
     Request.get(api, { headers: GetAuthorizationHeader(),params: params })
       .then((res) => {

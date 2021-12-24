@@ -25,9 +25,9 @@ const store = createStore({
     finalCity(state){
       return state.nowCity
     },
-    landScapeDatas(state){
-      return state.placeDatas
-    }
+    // landScapeDatas(state){
+    //   return state.placeDatas
+    // }
   },
 });
 

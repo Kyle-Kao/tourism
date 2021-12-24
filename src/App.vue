@@ -1,15 +1,16 @@
 <template>
   <div>
     <router-view></router-view>
+    <button @click="getCity">city</button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters , mapActions } from "vuex";
 export default {
-  // methods: {
-  //   ...mapActions(["testApi"]),
-  // },
+  methods: {
+    ...mapActions(["getCity"]),
+  },
   computed: {
     ...mapGetters(["getAllData"]),
   },

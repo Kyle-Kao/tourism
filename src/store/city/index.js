@@ -92,18 +92,20 @@ const cityDatas = {
           value: 'LienchiangCounty',
         },
       ],
+      subNowCity: ''
     }
   },
   mutations: {
     showValue(state,ref) {
       let dom = ref.city
-      state.nowCity = dom.value;
-      console.log(state.nowCity);
+      state.subNowCity = dom.value;
+      // console.log(state.subNowCity);
     },
   },
   actions: {
     showValue(context, ref) {
       context.commit('showValue', ref);
+      context.rootState.nowCity = context.rootState.city.subNowCity
     },
   },
   getters: {

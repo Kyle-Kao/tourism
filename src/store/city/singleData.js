@@ -1,20 +1,26 @@
 import { getSingleCity } from "@/api/module/singleApi.js";
 const singleDatas = {
   // namespaced: true,
+  state(){
+    return{
+      placeDatas:[]
+    }
+  },
   mutations: {
     getCity(state, data){
       state.placeDatas = data.data
     },
   },
   actions: {
-    getCity(context,data){
-      getSingleCity(data.city).then(res=>{
+    getCity(context){
+      console.log(context)
+      getSingleCity(context.rootState.nowCity).then(res=>{
         context.commit("getCity",res.data)
       })
     },
   },
   getters: {
-    getCity(state){
+    getPlaceDatas(state){
       return state.placeDatas
     }
   }

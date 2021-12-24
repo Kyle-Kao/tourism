@@ -1,5 +1,5 @@
 <template>
-  <router-link class="card" v-for="(landScapeData, index) in landScapeDatas" :key="index" :to="'/landScape/' + finalCity">
+  <router-link class="card" v-for="(landScapeData, index) in getPlaceDatas" :key="index" :to="'/landScape/' + finalCity">
     <div class="img">
       <img :src="landScapeData.Picture[0].PictureUrl1" :alt="landScapeData.Picture[0].PictureDescription1" />
     </div>
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     ...mapGetters(['getCity']),
-    ...mapGetters(['finalCity', 'landScapeDatas']),
+    ...mapGetters(['finalCity', 'getPlaceDatas']),
   },
 };
 </script>
