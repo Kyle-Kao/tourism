@@ -1,15 +1,15 @@
 <template>
-  <router-link class="card" v-for="(placeData, index) in placeDatas" :key="index" :to="'/landScape/' + placeData.name">
+  <router-link class="card" v-for="(landScapeData, index) in landScapeDatas" :key="index" :to="'/landScape/' + finalCity">
     <div class="img">
-      <img src="" alt="" />
+      <img :src="landScapeData.Picture[0].PictureUrl1" :alt="landScapeData.Picture[0].PictureDescription1" />
     </div>
     <div class="textbox">
-      <div class="where" v-html="placeData.cnName"></div>
-      <div class="describe" v-html="placeData.des"></div>
-      <div class="booking" v-html="placeData.booking"></div>
+      <div class="where" v-html="landScapeData.Name"></div>
+      <div class="describe" v-html="landScapeData.DescriptionDetail"></div>
+      <div class="booking" v-html="landScapeData.booking"></div>
       <div class="phone">
         <font-awesome-icon icon="mobile" class="icon" />
-        {{ placeData.phone }}
+        {{ landScapeData.Phone }}
       </div>
     </div>
   </router-link>
@@ -20,10 +20,17 @@
 </style>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters,  } from 'vuex';
 export default {
+  created(){
+    this.getCity;
+  },
+  methods: {
+    // ...mapActions(["getCity"]),
+  },
   computed: {
-    ...mapGetters(['placeDatas']),
+    ...mapGetters(['getCity']),
+    ...mapGetters(['finalCity', 'landScapeDatas']),
   },
 };
 </script>

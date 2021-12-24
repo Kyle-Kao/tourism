@@ -15,7 +15,7 @@
       <div class="category">
         <h2>Category…</h2>
         <div class="category-box">
-          <router-link class="card" to="/landscape">景點類</router-link>
+          <router-link class="card" to="/landscape" @click="getCity({city: finalCity})">景點類</router-link>
           <router-link class="card" to="/food">餐飲類</router-link>
           <router-link class="card" to="/lodging">旅宿類</router-link>
           <router-link class="card" to="/activity">活動類</router-link>
@@ -33,10 +33,12 @@
   import { mapGetters, mapActions } from 'vuex';
 export default {
   computed: {
-    ...mapGetters('city',['cityDatas'])
+    ...mapGetters('city',['cityDatas']),
+    ...mapGetters(['finalCity'])
   },
   methods: {
-    ...mapActions('city',['showValue'])
+    ...mapActions('city',['showValue']),
+    ...mapActions(['getCity']),
   },
 };
 </script>

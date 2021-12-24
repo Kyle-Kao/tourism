@@ -5,7 +5,6 @@ export function getAll(){
   return get('/MOTC/v2/Tourism/ScenicSpot?$top=30&$format=JSON')
 }
 
-export function getXXXX(){
-  //  第二個參數丟所需參數
-  return get('something',{})
+export function getSingleCity(city){
+  return get(`/MOTC/v2/Tourism/ScenicSpot/${city}?%24top=30&%24format=JSON`)
 }

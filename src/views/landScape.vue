@@ -7,9 +7,8 @@
           <div class="gowhere">
             <label for="selectCity">走，我們去</label>
             <select name="city" id="selectCity">
-              <option value="0">南投</option>
-              <option value="1">高雄</option>
-              <option value="2">台北</option>
+              <option value="0">— choose an option —</option>
+              <option :value="cityData.value" v-for="cityData in cityDatas" :key="cityData.name" v-html="cityData.name"></option>
             </select>
             <font-awesome-icon icon="chevron-down" class="icon" />
           </div>
@@ -28,6 +27,7 @@
           <div class="data">共 <span>365</span> 筆資料</div>
         </div>
         <div class="situation3">
+          <h3 v-html="finalCity"></h3>
           <ScapeCard></ScapeCard>
         </div>
       </div>
@@ -40,12 +40,19 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex';
 import header from '@/components/header.vue';
 import scapeCard from '@/components/scapeCard.vue';
 export default {
   components: {
     Header: header,
     ScapeCard: scapeCard,
+  },
+  computed: {
+    ...mapGetters('city',['cityDatas']),
+    ...mapGetters(['finalCity'])
+  },
+  methods: {
   },
 };
 </script>
