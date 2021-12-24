@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import cityModule from "./city/index.js";
-import { getAll } from "../api/index";
+import { getAll } from "../api/module/singleApi.js";
 
 const store = createStore({
   modules: {
