@@ -1,6 +1,6 @@
 import { getSingleCity } from "@/api/module/singleApi.js";
 const singleDatas = {
-  // namespaced: true,
+  namespaced: true,
   state(){
     return{
       placeDatas:[]
@@ -8,7 +8,8 @@ const singleDatas = {
   },
   mutations: {
     getCity(state, data){
-      state.placeDatas = data.data
+      state.placeDatas = data
+      console.log(state.placeDatas[0].Picture)
     },
   },
   actions: {
@@ -16,6 +17,7 @@ const singleDatas = {
       console.log(context)
       getSingleCity(context.rootState.nowCity).then(res=>{
         context.commit("getCity",res.data)
+        // console.log(res.data , 'placeDatas:'+ context.rootState.placeDatas)
       })
     },
   },

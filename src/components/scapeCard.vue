@@ -1,7 +1,7 @@
 <template>
   <router-link class="card" v-for="(landScapeData, index) in getPlaceDatas" :key="index" :to="'/landScape/' + finalCity">
     <div class="img">
-      <img :src="landScapeData.Picture[0].PictureUrl1" :alt="landScapeData.Picture[0].PictureDescription1" />
+      <img :src="landScapeData.Picture.PictureUrl1" :alt="landScapeData.Picture.PictureDescription1" />
     </div>
     <div class="textbox">
       <div class="where" v-html="landScapeData.Name"></div>
@@ -20,17 +20,17 @@
 </style>
 
 <script>
-import { mapGetters,  } from 'vuex';
+import { mapGetters,mapActions } from 'vuex';
 export default {
   created(){
-    this.getCity;
+    this.getCity();
   },
   methods: {
-    // ...mapActions(["getCity"]),
+    ...mapActions('single',["getCity"]),
   },
   computed: {
-    ...mapGetters(['getCity']),
-    ...mapGetters(['finalCity', 'getPlaceDatas']),
+    ...mapGetters('single',['getPlaceDatas']),
+    ...mapGetters(['finalCity']),
   },
 };
 </script>
