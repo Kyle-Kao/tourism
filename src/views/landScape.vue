@@ -27,7 +27,6 @@
           <div class="data">共 <span>365</span> 筆資料</div>
         </div>
         <div class="situation3">
-          <h3 v-html="finalCity"></h3>
           <ScapeCard></ScapeCard>
         </div>
       </div>

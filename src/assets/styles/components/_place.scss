@@ -1,56 +1,60 @@
-.card{
-  padding: 3rem;
-  background-color: $light-colorbg;
-  border: 1px solid #B39C8B;
-  @include flexCenter;
-  cursor: pointer;
-  &:nth-of-type(1){
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-  }
-  img{
-    @include sz(44rem, 30rem);
-    border: 1px solid $icon-color;
-  }
-  .textbox{
-    align-self: stretch;
+.card {
+    padding: 3rem;
+    background-color: $light-colorbg;
+    border: 1px solid #B39C8B;
     @include flexCenter;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-left: 3rem;
-    &>div{
-      color: $txt-color;
+    cursor: pointer;
+    &:nth-of-type(1) {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
     }
-    .where{
-      font-size: 2.8rem;
+    img {
+        @include sz(44rem, 30rem);
+        border: 1px solid $icon-color;
+        opacity: .5;
     }
-    .describe{
-      font-size: 2.4rem;
-      height: 15rem;
-      overflow: scroll;
-      margin: 1rem 0;
-      padding-right: 3rem;
+    .textbox {
+        align-self: stretch;
+        @include flexCenter;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-left: 3rem;
+        &>div {
+            color: $txt-color;
+        }
+        .where {
+            font-size: 2.8rem;
+        }
+        .describe {
+            font-size: 2.4rem;
+            height: 15rem;
+            overflow: scroll;
+            margin: 1rem 0;
+            padding-right: 3rem;
+        }
+        .booking {
+            font-size: 2.4rem;
+        }
+        .phone {
+            align-self: flex-end;
+            font-size: 2rem;
+            .icon {
+                font-size: 3rem;
+                color: $icon-color;
+            }
+        }
     }
-    .booking{
-      font-size: 2.4rem;
+    &:hover {
+        box-shadow: 0 .5rem .5rem $shadow-color;
+        display: inline-flex;
+        img {
+            opacity: 1;
+        }
+        .textbox {
+            &>div {
+                color: $txt-darkcolor;
+            }
+        }
     }
-    .phone{
-      align-self: flex-end;
-      font-size: 2rem;
-      .icon{
-        font-size: 3rem;
-        color: $icon-color;
-      }
-    }
-  }
-  &:hover{
-    box-shadow: 0 .5rem .5rem $shadow-color;
-    .textbox{
-      &>div{
-        color: $txt-darkcolor;
-      }
-    }
-    
-  }
 }

@@ -1,9 +1,10 @@
 <template>
-  <router-link class="card" v-for="(landScapeData, index) in getPlaceDatas" :key="index" :to="'/landScape/' + finalCity">
+  <router-link class="card" v-for="(landScapeData, index) in getPlaceDatas" :key="index" :to="'/landScape/' + landScapeData.ID">
     <div class="img">
       <img :src="landScapeData.Picture.PictureUrl1" :alt="landScapeData.Picture.PictureDescription1" />
     </div>
     <div class="textbox">
+      
       <div class="where" v-html="landScapeData.Name"></div>
       <div class="describe" v-html="landScapeData.DescriptionDetail"></div>
       <div class="booking" v-html="landScapeData.booking"></div>

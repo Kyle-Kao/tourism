@@ -1,7 +1,6 @@
 <template>
   <div>
     <router-view></router-view>
-    <button @click="getCity">city</button>
   </div>
 </template>
 

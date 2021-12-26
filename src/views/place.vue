@@ -3,6 +3,7 @@
     <Header></Header>
     <div class="place">
       <div class="place-container">
+        <button @click="showUrl">click</button>
         <div class="left">
           <div class="title">
             <h2>猫囒山茶業改良場</h2>
@@ -38,6 +39,7 @@
             <li>
               <img src="" alt="">
               <div class="info">
+                
                 <div class="where">猫囒山步道</div>
                 <div class="stag">遊憩類</div>
                 <div class="des">南投縣555魚池鄉中山路29 2號</div>
@@ -61,9 +63,36 @@
 
 <script>
 import header from '@/components/header.vue';
+import { mapGetters,mapActions } from 'vuex';
 export default {
   components: {
     Header: header,
+  },
+  data(){
+    return{
+      datas:[],
+    }
+  },
+  created(){
+    this.getCity()
+  },
+  computed:{
+    ...mapGetters('single',['getPlaceDatas'])
+  },
+  methods: {
+    ...mapActions('single',["getCity"]),
+    showUrl(){
+      // console.log(window.location.pathname , this.getPlaceDatas)
+      this.getPlaceDatas.filter((arr,self)=>{
+        // return arr.ID.indexOf('window.location.pathname.split('/')[2]')
+        const path = window.location.pathname.split('/')[2]
+        if(arr.ID.indexOf(path)> -1){
+          console.log(self)
+        }
+        // console.log(arr.ID.indexOf(path))
+      })
+    },
+    
   },
 };
 </script>
