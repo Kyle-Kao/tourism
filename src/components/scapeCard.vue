@@ -24,14 +24,15 @@
 import { mapGetters,mapActions } from 'vuex';
 export default {
   created(){
-    this.getCity();
+    this.getCity({city: this.finalCity});
+    // this.getCity();
   },
   methods: {
     ...mapActions('single',["getCity"]),
   },
   computed: {
     ...mapGetters('single',['getPlaceDatas']),
-    ...mapGetters(['finalCity']),
+    ...mapGetters('city',['finalCity']),
   },
 };
 </script>

@@ -6,7 +6,7 @@
         <div class="situation">
           <div class="gowhere">
             <label for="selectCity">走，我們去</label>
-            <select name="city" id="selectCity">
+            <select name="city" id="selectCity" v-model="this.finalCity">
               <option value="0">— choose an option —</option>
               <option :value="cityData.value" v-for="cityData in cityDatas" :key="cityData.name" v-html="cityData.name"></option>
             </select>
@@ -47,11 +47,16 @@ export default {
     Header: header,
     ScapeCard: scapeCard,
   },
+  created() {
+  },
   computed: {
     ...mapGetters('city',['cityDatas']),
-    ...mapGetters(['finalCity'])
+    ...mapGetters('city',['finalCity'])
   },
   methods: {
+    log(){
+      console.log('1:' + this.finalCity)
+    }
   },
 };
 </script>

@@ -30,15 +30,15 @@
 </style>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
+  import { mapGetters, mapActions,mapMutations } from 'vuex';
 export default {
   computed: {
     ...mapGetters('city',['cityDatas']),
-    ...mapGetters(['finalCity'])
+    ...mapGetters('city',['finalCity'])
   },
   methods: {
-    ...mapActions('city',['showValue']),
-    ...mapActions(['getCity']),
+    ...mapMutations('city',['showValue']),
+    ...mapActions('single',['getCity']),
   },
 };
 </script>

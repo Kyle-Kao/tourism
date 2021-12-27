@@ -1,31 +1,37 @@
-import { getSingleCity } from "@/api/module/singleApi.js";
+import { getSingleCity } from '@/api/module/singleApi.js';
 const singleDatas = {
-    namespaced: true,
-    state() {
-        return {
-            placeDatas: []
-        }
+  namespaced: true,
+  state() {
+    return {
+      placeDatas: [],
+    };
+  },
+  mutations: {
+    getCity(state, data) {
+      state.placeDatas = data;
     },
-    mutations: {
-        getCity(state, data) {
-            state.placeDatas = data
-            console.log(state.placeDatas[0].Picture)
-        },
+  },
+  actions: {
+    getCity(context, {city}) {
+      getSingleCity(city).then((res) => {
+				var obj = JSON.parse(localStorage.getItem('vux'))
+				console.log(obj.city.nowCity)
+        context.commit('getCity', res.data);
+      });
+		},
+		// getCity(context) {
+		// 	var obj = JSON.parse(localStorage.getItem('vux'))
+    //   getSingleCity(obj.city.nowCity).then((res) => {
+		// 		console.log(obj.city.nowCity)
+    //     context.commit('getCity', res.data);
+    //   });
+    // },
+  },
+  getters: {
+    getPlaceDatas(state) {
+      return state.placeDatas;
     },
-    actions: {
-        getCity(context) {
-            console.log(context)
-            getSingleCity(context.rootState.nowCity).then(res => {
-                context.commit("getCity", res.data)
-                    // console.log(res.data , 'placeDatas:'+ context.rootState.placeDatas)
-            })
-        },
-    },
-    getters: {
-        getPlaceDatas(state) {
-            return state.placeDatas
-        }
-    }
-}
+  },
+};
 
-export default singleDatas
+export default singleDatas;

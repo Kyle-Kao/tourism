@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+// import store from '../store/index.js';
 
 const routes = [{
         path: '/',
@@ -47,5 +48,11 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//     console.log(to)
+//     // store.commit("city/showValue",{city: to.})
+//     next()
+//   });
 
 export default router;

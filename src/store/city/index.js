@@ -1,6 +1,8 @@
+// import createPersistedState from 'vuex-persistedstate';
+
 const cityDatas = {
   namespaced: true,
-  state(){
+  state() {
     return {
       cityDatas: [
         {
@@ -92,27 +94,25 @@ const cityDatas = {
           value: 'LienchiangCounty',
         },
       ],
-      subNowCity: ''
-    }
+      nowCity: '',
+    };
   },
   mutations: {
-    showValue(state,ref) {
-      let dom = ref.city
-      state.subNowCity = dom.value;
-      // console.log(state.subNowCity);
+    showValue(state, ref) {
+      let dom = ref.city;
+      state.nowCity = dom.value;
+      console.log('component-city:' +state.nowCity);
     },
   },
-  actions: {
-    showValue(context, ref) {
-      context.commit('showValue', ref);
-      context.rootState.nowCity = context.rootState.city.subNowCity
-    },
-  },
+  actions: {},
   getters: {
     cityDatas(state) {
       return state.cityDatas;
     },
+    finalCity(state) {
+      return state.nowCity;
+    },
   },
-}
+};
 
-export default cityDatas
+export default cityDatas;
