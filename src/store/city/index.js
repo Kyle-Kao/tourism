@@ -1,4 +1,4 @@
-// import createPersistedState from 'vuex-persistedstate';
+
 
 const cityDatas = {
   namespaced: true,
@@ -101,7 +101,6 @@ const cityDatas = {
     showValue(state, ref) {
       let dom = ref.city;
       state.nowCity = dom.value;
-      console.log('component-city:' +state.nowCity);
     },
   },
   actions: {},

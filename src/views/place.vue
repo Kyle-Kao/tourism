@@ -5,10 +5,10 @@
       <div class="place-container">
         <div class="left">
           <div class="title">
-            <h2 v-html="datas.Name"></h2>
-            <div class="stag" v-html="datas.Class1"></div>
+            <h2 v-html="datas.ScenicSpotName"></h2>
+            <div class="stag" v-html="datas.Class1" v-if="datas.Class1"></div>
           </div>
-          <img :src="datas.Picture.PictureUrl1" alt="" />
+          <img :src="datas.Picture.PictureUrl1" :alt="datas.Picture.PictureDescription1 ? datas.Picture.PictureDescription1 : '尚未提供'" />
           <div class="line"></div>
           <div class="txtbox" v-html="datas.DescriptionDetail"></div>
         </div>
@@ -16,12 +16,14 @@
           <div class="tag">其他景點</div>
           <ul>
             <li v-for="(data, index) in getPlaceDatas" :key="index">
-              <img :src="data.Picture.PictureUrl1" alt="" />
+              <div class="img">
+                <img :src="data.Picture.PictureUrl1" :alt="data.Picture.PictureDescription1 ? data.Picture.PictureDescription1 : '尚未提供'" />
+              </div>
               <div class="info">
-                <div class="where" v-html="data.Name"></div>
-                <div class="stag" v-html="data.Class1"></div>
+                <div class="where" v-html="data.ScenicSpotName"></div>
+                <div class="stag" v-html="data.Class1" v-if="datas.Class1"></div>
                 <div class="des" v-html="data.Address"></div>
-                <router-link class="detail" :to="'/landScape/' + data.ID">詳細資訊</router-link>
+                <router-link class="detail" :to="'/landScape/' + data.ScenicSpotID">詳細資訊</router-link>
               </div>
             </li>
           </ul>
@@ -54,8 +56,6 @@ export default {
   created() {
     this.getCity({ city: this.finalCity });
     this.showUrl();
-    this.shown();
-    // this.getCity()
   },
   computed: {
     ...mapGetters('single', ['getPlaceDatas']),
@@ -66,15 +66,25 @@ export default {
     showUrl() {
       this.getPlaceDatas.filter((arr) => {
         const path = window.location.pathname.split('/')[2];
-        if (arr.ID.indexOf(path) > -1) {
+        if (arr.ScenicSpotID.indexOf(path) > -1) {
           this.datas = arr;
-          // console.log(arr.Name)
         }
         // console.log(this.datas)
       });
     },
-    shown() {
-      console.log(this.datas);
+  },
+  // beforeRouteEnter (to, from, next) {
+  //   console.log(to.params.place)
+  //   next()
+  // },
+  watch: {
+    $route(to, from) {
+      let toPath = to.path;
+      let fromPath = from.path;
+      console.log(to.path);
+      if (toPath != fromPath) {
+        this.showUrl();
+      }
     },
   },
 };

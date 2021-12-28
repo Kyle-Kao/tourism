@@ -14,9 +14,9 @@ const singleDatas = {
   actions: {
     getCity(context, {city}) {
       getSingleCity(city).then((res) => {
-				var obj = JSON.parse(localStorage.getItem('vux'))
-				console.log(obj.city.nowCity)
-        context.commit('getCity', res.data);
+				// var obj = JSON.parse(localStorage.getItem('vux'))
+				context.commit('getCity', res.data);
+				// console.log(res.data)
       });
 		},
 		// getCity(context) {
