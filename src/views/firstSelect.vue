@@ -2,10 +2,7 @@
   <div class="Firstselect">
     <div class="Firstselect-box">
       <div class="area">
-        <select name="city" id="city" @change="showValue({city:this.$refs.city})" ref="city">
-          <option value="0">— choose an option —</option>
-          <option :value="cityData.value" v-for="cityData in cityDatas" :key="cityData.name" v-html="cityData.name"></option>
-        </select>
+        <Select id="city"></Select>
         <font-awesome-icon icon="chevron-down" class="icon" />
       </div>
       <div class="search">
@@ -15,10 +12,14 @@
       <div class="category">
         <h2>Category…</h2>
         <div class="category-box">
-          <router-link class="card" to="/landscape" @click="getCity({city: finalCity})">景點類</router-link>
-          <router-link class="card" to="/food">餐飲類</router-link>
-          <router-link class="card" to="/lodging">旅宿類</router-link>
-          <router-link class="card" to="/activity">活動類</router-link>
+          <router-link 
+          v-for="data in linkDatas" 
+          :key="data.name" 
+          :to="data.url" 
+          v-html="data.cnName" class="card"
+          @click="checkCategory({type: data.name})"
+          >
+          </router-link>
         </div>
       </div>
     </div>
@@ -30,15 +31,17 @@
 </style>
 
 <script>
-  import { mapGetters, mapActions,mapMutations } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
+import select from '@/components/select.vue';
 export default {
+  components: {
+    Select: select,
+  },
   computed: {
-    ...mapGetters('city',['cityDatas']),
-    ...mapGetters('city',['finalCity'])
+    ...mapGetters(['linkDatas']),
   },
   methods: {
-    ...mapMutations('city',['showValue']),
-    ...mapActions('single',['getCity']),
+    ...mapMutations(['checkCategory']),
   },
 };
 </script>

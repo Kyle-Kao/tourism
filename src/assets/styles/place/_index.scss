@@ -33,10 +33,15 @@
           padding: .5rem 1rem;
         }
       }
-      img{
+      .img{
         @include sz(100%,38rem);
         margin-top: 2rem;
+        img{
+        @include sz(100%);
+        object-fit: cover;
+        }
       }
+      
       .line{
         @include sz(6rem , .3rem);
         background-color: nth($btn-colors, 1);

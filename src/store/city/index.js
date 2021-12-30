@@ -1,5 +1,3 @@
-
-
 const cityDatas = {
   namespaced: true,
   state() {
@@ -94,23 +92,21 @@ const cityDatas = {
           value: 'LienchiangCounty',
         },
       ],
+      citySingleData: [],
       nowCity: '',
     };
   },
   mutations: {
-    showValue(state, ref) {
-      let dom = ref.city;
-      state.nowCity = dom.value;
-    },
+    
   },
   actions: {},
   getters: {
     cityDatas(state) {
       return state.cityDatas;
     },
-    finalCity(state) {
-      return state.nowCity;
-    },
+    // finalCity(state) {
+    //   return state.nowCity;
+    // },
   },
 };
 

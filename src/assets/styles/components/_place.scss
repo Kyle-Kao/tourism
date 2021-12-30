@@ -8,12 +8,18 @@
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
     }
-    img {
+    .img {
+        flex: 50%;
         @include sz(44rem, 30rem);
         border: 1px solid $icon-color;
         opacity: .5;
+        img{
+            width: 100%;
+            object-fit: contain;
+        }
     }
     .textbox {
+        flex: 50%;
         align-self: stretch;
         @include flexCenter;
         align-items: flex-start;

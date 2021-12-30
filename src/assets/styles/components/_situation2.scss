@@ -1,0 +1,44 @@
+.situation2 {
+  @include flexCenter;
+  justify-content: space-between;
+  padding-right: 2rem;
+  .search {
+    background-image: linear-gradient(to bottom, #efe9e5, #ded9c8);
+    box-shadow: inset 0 1px 0 #ffffff, 0 0.5rem 0.5rem $shadow-color;
+    border-radius: 1rem;
+    width: 80%;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    @include flexCenter;
+    justify-content: space-between;
+    &-box {
+      padding: 1.5rem 2rem;
+      font-size: 2rem;
+      background-color: $light-colorbg;
+      border-radius: 1rem;
+      box-shadow: inset 0px 0rem 0.8rem $shadow-color;
+      width: 80%;
+    }
+    &-icon {
+      @include sz(5.5rem);
+      border-radius: 50%;
+      box-shadow: 0 0.4rem 0.4rem $shadow-color;
+      @include flexCenter;
+      cursor: pointer;
+      .icon {
+        font-size: 3rem;
+        color: $icon-color;
+      }
+    }
+  }
+  .data {
+    font-size: 2rem;
+    align-self: flex-end;
+    padding-bottom: 1rem;
+    border-bottom: 0.3rem solid nth($btn-colors, 1);
+    color: $txt-darkcolor;
+    span {
+      font-size: 2.2rem;
+    }
+  }
+}

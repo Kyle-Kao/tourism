@@ -16,16 +16,8 @@ const singleDatas = {
       getSingleCity(city).then((res) => {
 				// var obj = JSON.parse(localStorage.getItem('vux'))
 				context.commit('getCity', res.data);
-				// console.log(res.data)
       });
 		},
-		// getCity(context) {
-		// 	var obj = JSON.parse(localStorage.getItem('vux'))
-    //   getSingleCity(obj.city.nowCity).then((res) => {
-		// 		console.log(obj.city.nowCity)
-    //     context.commit('getCity', res.data);
-    //   });
-    // },
   },
   getters: {
     getPlaceDatas(state) {

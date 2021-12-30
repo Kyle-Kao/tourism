@@ -8,7 +8,9 @@
             <h2 v-html="datas.ScenicSpotName"></h2>
             <div class="stag" v-html="datas.Class1" v-if="datas.Class1"></div>
           </div>
-          <img :src="datas.Picture.PictureUrl1" :alt="datas.Picture.PictureDescription1 ? datas.Picture.PictureDescription1 : '尚未提供'" />
+          <div class="img">
+            <img :src="datas.Picture.PictureUrl1 ? datas.Picture.PictureUrl1 : ''" :alt="datas.Picture.PictureDescription1 ? datas.Picture.PictureDescription1 : '尚未提供'" />
+          </div>
           <div class="line"></div>
           <div class="txtbox" v-html="datas.DescriptionDetail"></div>
         </div>
@@ -28,8 +30,8 @@
             </li>
           </ul>
           <div class="btnbox">
-            <button class="prev">上一頁</button>
-            <button class="next">下一頁</button>
+            <button class="prev" @click="shown('prev')">上一頁</button>
+            <button class="next" @click="shown('next')">下一頁</button>
           </div>
         </div>
       </div>
@@ -43,7 +45,7 @@
 
 <script>
 import header from '@/components/header.vue';
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
   components: {
     Header: header,
@@ -51,41 +53,52 @@ export default {
   data() {
     return {
       datas: [],
+      pageType: 'prev',
     };
   },
   created() {
-    this.getCity({ city: this.finalCity });
     this.showUrl();
   },
   computed: {
     ...mapGetters('single', ['getPlaceDatas']),
-    ...mapGetters('city', ['finalCity']),
   },
   methods: {
-    ...mapActions('single', ['getCity']),
     showUrl() {
       this.getPlaceDatas.filter((arr) => {
-        const path = window.location.pathname.split('/')[2];
+        const path = this.$route.params.place;
         if (arr.ScenicSpotID.indexOf(path) > -1) {
           this.datas = arr;
         }
-        // console.log(this.datas)
+      });
+    },
+    shown(type) {
+      // 比對資料
+      this.getPlaceDatas.filter((arr, index, self) => {
+        // 找出與router裡ID相符的物件
+        const path = this.$route.params.place;
+        if (arr.ScenicSpotID.indexOf(path) > -1) {
+          // 判斷按鈕類別
+          if (type == 'prev') {
+            if (index > 0) {
+              // 更新datas 裡的資料
+              this.datas = self[index - 1];
+              // 同時切換router
+              this.$router.push({ path: '/landScape/' + this.datas.ScenicSpotID });
+            }
+          } else {
+            if (index < 29) {
+              this.datas = self[index + 1];
+              this.$router.push({ path: '/landScape/' + this.datas.ScenicSpotID });
+            }
+          }
+        }
       });
     },
   },
-  // beforeRouteEnter (to, from, next) {
-  //   console.log(to.params.place)
-  //   next()
-  // },
+
   watch: {
-    $route(to, from) {
-      let toPath = to.path;
-      let fromPath = from.path;
-      console.log(to.path);
-      if (toPath != fromPath) {
-        this.showUrl();
-      }
-    },
+    // 如果router改變 會呼叫下方function
+    $route: 'showUrl',
   },
 };
 </script>
