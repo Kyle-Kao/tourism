@@ -23,8 +23,8 @@ export default {
     Select: select
   },
    computed: {
-    ...mapGetters(['linkDatas']),
-    ...mapGetters(['getcheckCategory'])
+    ...mapGetters('city',['linkDatas']),
+    ...mapGetters('city',['getcheckCategory'])
   },
 }
 </script>

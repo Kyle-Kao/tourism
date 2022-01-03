@@ -25,7 +25,7 @@ import { mapGetters } from 'vuex';
 export default {
   
   computed: {
-    ...mapGetters('single',['getPlaceDatas']),
+    ...mapGetters('city',['getPlaceDatas']),
   },
 };
 </script>

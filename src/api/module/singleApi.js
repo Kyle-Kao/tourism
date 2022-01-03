@@ -8,3 +8,8 @@ export function getAll(){
 export function getSingleCity(city){
   return get(`/MOTC/v2/Tourism/ScenicSpot/${city}?%24top=30&%24format=JSON`)
 }
+
+// 取得特定城市餐飲資訊
+export function getSinglerestaurant(city){
+  return get(`/MOTC/v2/Tourism/Restaurant/${city}?%24top=30&%24format=JSON`)
+}

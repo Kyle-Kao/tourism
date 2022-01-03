@@ -17,7 +17,7 @@
           :key="data.name" 
           :to="data.url" 
           v-html="data.cnName" class="card"
-          @click="checkCategory({type: data.name})"
+          @click="getsomething({type: data.name , city:getNowCityName})"
           >
           </router-link>
         </div>
@@ -31,17 +31,18 @@
 </style>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import select from '@/components/select.vue';
 export default {
   components: {
     Select: select,
   },
   computed: {
-    ...mapGetters(['linkDatas']),
+    ...mapGetters('city',['linkDatas']),
+    ...mapGetters('city', ['getNowCityName'])
   },
   methods: {
-    ...mapMutations(['checkCategory']),
+    ...mapActions('city', ['getsomething'])
   },
 };
 </script>

@@ -14,8 +14,8 @@
         border: 1px solid $icon-color;
         opacity: .5;
         img{
-            width: 100%;
-            object-fit: contain;
+            @include sz(100%);
+            object-fit: cover;
         }
     }
     .textbox {
@@ -54,6 +54,7 @@
     &:hover {
         box-shadow: 0 .5rem .5rem $shadow-color;
         display: inline-flex;
+        width: 100%;
         img {
             opacity: 1;
         }

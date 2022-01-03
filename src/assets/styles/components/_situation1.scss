@@ -44,6 +44,10 @@
       opacity: 0.5;
       border: none;
       // cursor: none;
+      &:hover{
+        width: initial;
+        // box-shadow: none;
+      }
     }
     @for $i from 1 through 4 {
       .card {

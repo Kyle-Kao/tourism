@@ -1,7 +1,10 @@
+import { getSingleCity, getSinglerestaurant } from '@/api/module/singleApi.js';
 const cityDatas = {
   namespaced: true,
   state() {
     return {
+      nowCity: '',
+      categoryData: '',
       cityDatas: [
         {
           name: '臺北市',
@@ -92,21 +95,95 @@ const cityDatas = {
           value: 'LienchiangCounty',
         },
       ],
-      citySingleData: [],
-      nowCity: '',
+      linkTypes: [
+        {
+          cnName: '景點類',
+          name: 'landscape',
+          url: '/landscape',
+        },
+        {
+          cnName: '餐飲類',
+          name: 'restaurant',
+          url: '/restaurant',
+        },
+        {
+          cnName: '旅宿類',
+          name: 'lodging',
+          url: '/lodging',
+        },
+        {
+          cnName: '活動類',
+          name: 'activity',
+          url: '/activity',
+        },
+      ],
+      placeDatas: [],
+      restaurantDatas:[],
     };
   },
   mutations: {
-    
+    getNowCity(state, data) {
+      state.nowCity = data.city;
+    },
+    checkCategory(state, data) {
+      state.categoryData = data.type;
+    },
+    getCity(state, data) {
+      state.placeDatas = data;
+    },
+    getrestaurant(state, data){
+      state.restaurantDatas = data
+    }
   },
-  actions: {},
+  actions: {
+    getsomething(context, data) {
+      /** 
+       * type: checkCategory
+       * city: getNowCityName
+       * */ 
+      switch (data.type) {
+        case 'landscape':
+          context.commit('checkCategory', data);
+          getSingleCity(data.city).then((res) => {
+            context.commit('getCity', res.data);
+          });
+          break;
+        case 'restaurant':
+          context.commit('checkCategory', data);
+          getSinglerestaurant(data.city).then((res)=>{
+            context.commit('getrestaurant', res.data)
+          })
+          break;
+        case 'lodging':
+          context.commit('checkCategory', data);
+          break;
+        case 'activity':
+          context.commit('checkCategory', data);
+          break;
+      }
+    },
+  },
   getters: {
     cityDatas(state) {
       return state.cityDatas;
     },
-    // finalCity(state) {
-    //   return state.nowCity;
-    // },
+    linkDatas(state) {
+      return state.linkTypes;
+    },
+    // 獲取現在城市&狀態
+    getNowCityName(state) {
+      return state.nowCity;
+    },
+    getcheckCategory(state) {
+      return state.categoryData;
+    },
+    // 獲取四種狀態的值
+    getPlaceDatas(state) {
+      return state.placeDatas;
+    },
+    getRestaurantDatas(state){
+      return state.restaurantDatas
+    }
   },
 };
 
