@@ -29,14 +29,24 @@ const routes = [
     component: () => import('../views/restaurantname.vue'),
   },
   {
-    path: '/lodging',
-    name: 'lodging',
-    component: () => import('../views/lodGing.vue'),
+    path: '/hotel',
+    name: 'hotel',
+    component: () => import('../views/hotel.vue'),
+  },
+  {
+    path: '/hotel/:hotelname',
+    name: 'hotelname',
+    component: () => import('../views/hotelName.vue'),
   },
   {
     path: '/activity',
     name: 'activity',
     component: () => import('../views/activity.vue'),
+  },
+  {
+    path: '/activity/:activityname',
+    name: 'activityname',
+    component: () => import('../views/activityName.vue'),
   },
   {
     path: '/:notFound(.*)',

@@ -6,14 +6,12 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapMutations} from 'vuex';
+import { mapGetters, mapMutations} from 'vuex';
 export default {
   computed: {
     ...mapGetters('city', ['cityDatas']),
   },
   methods: {
-    ...mapActions('single', ['getCity']),
-    ...mapActions('single', ['getFood']),
     ...mapMutations('city',['getNowCity']),
     // 儲存城市
     showValue(e) {

@@ -1,4 +1,4 @@
-import { getSingleCity, getSinglerestaurant } from '@/api/module/singleApi.js';
+import { getSingleCity, getSingleRestaurant, getSingleHotel,getSingleActivity } from '@/api/module/singleApi.js';
 const cityDatas = {
   namespaced: true,
   state() {
@@ -108,8 +108,8 @@ const cityDatas = {
         },
         {
           cnName: '旅宿類',
-          name: 'lodging',
-          url: '/lodging',
+          name: 'hotel',
+          url: '/hotel',
         },
         {
           cnName: '活動類',
@@ -119,6 +119,8 @@ const cityDatas = {
       ],
       placeDatas: [],
       restaurantDatas:[],
+      hotelDatas:[],
+      activityDatas:[],
     };
   },
   mutations: {
@@ -131,9 +133,15 @@ const cityDatas = {
     getCity(state, data) {
       state.placeDatas = data;
     },
-    getrestaurant(state, data){
+    getRestaurant(state, data){
       state.restaurantDatas = data
-    }
+    },
+    getHotel(state, data){
+      state.hotelDatas = data
+    },
+    getActivity(state, data){
+      state.activityDatas = data
+    },
   },
   actions: {
     getsomething(context, data) {
@@ -150,15 +158,21 @@ const cityDatas = {
           break;
         case 'restaurant':
           context.commit('checkCategory', data);
-          getSinglerestaurant(data.city).then((res)=>{
-            context.commit('getrestaurant', res.data)
+          getSingleRestaurant(data.city).then((res)=>{
+            context.commit('getRestaurant', res.data)
           })
           break;
-        case 'lodging':
+        case 'hotel':
           context.commit('checkCategory', data);
+          getSingleHotel(data.city).then((res)=>{
+            context.commit('getHotel', res.data)
+          })
           break;
         case 'activity':
           context.commit('checkCategory', data);
+          getSingleActivity(data.city).then((res)=>{
+            context.commit('getActivity', res.data)
+          })
           break;
       }
     },
@@ -183,7 +197,13 @@ const cityDatas = {
     },
     getRestaurantDatas(state){
       return state.restaurantDatas
-    }
+    },
+    getHotelDatas(state){
+      return state.hotelDatas
+    },
+    getActivityDatas(state){
+      return state.activityDatas
+    },
   },
 };
 
