@@ -43,10 +43,8 @@
       padding: 1rem 1.5rem;
       opacity: 0.5;
       border: none;
-      // cursor: none;
       &:hover{
         width: initial;
-        // box-shadow: none;
       }
     }
     @for $i from 1 through 4 {
@@ -62,6 +60,23 @@
             box-shadow: 0.3rem 0.3rem 0.6rem nth($btn-colors, $i);
           }
         }
+      }
+    }
+  }
+  @media(max-width: 768px){
+    flex-direction: column;
+    .gowhere{
+      @include flexCenter;
+      #selectCity {
+        font-size: 2.2rem;
+      }
+    }
+    .gocategory{
+      margin-right: initial;
+      margin-top: 1.5rem;
+      .card{
+        font-size: 2rem;
+        padding: 1rem;
       }
     }
   }

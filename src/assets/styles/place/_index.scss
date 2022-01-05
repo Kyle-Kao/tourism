@@ -55,6 +55,9 @@
         overflow: scroll;
       }
     }
+    .btn-boxM{
+      display: none;
+    }
     .right {
       flex: 45%;
       margin-left: 1rem;
@@ -123,6 +126,60 @@
         }
       }
       .btnbox{
+        @include flexCenter;
+        button{
+          font-size: 2rem;
+          padding: 1rem 3rem;
+          box-shadow: inset 0 .2rem 0 #ffffff, 0 .2rem 0.5rem $shadow-color;
+          border-radius: 2rem;
+          border: none;
+          margin-top: 3rem;
+          color: $txt-color;
+          cursor: pointer;
+          background-image: linear-gradient(to bottom, #efe9e5, #ded9c8);
+          &:hover{
+            color: $txt-darkcolor;
+            box-shadow: inset 0 .2rem 0 #ffffff, 0 .5rem 0.5rem $shadow-color;
+          }
+        }
+        button+button{
+          margin-left: 4rem;
+        }
+      }
+    }
+  }
+  @media(max-width: 768px){
+    height: 100%;
+    padding: 8rem 0 0rem;
+    &-container{
+      margin: 0;
+      border-radius: 0;
+      padding: 2rem;
+      align-items: center;
+      flex-direction: column;
+      .left{
+        .title{
+          align-items: flex-start;
+          flex-direction: column;
+          h2{
+            font-size: 2.2rem;
+          }
+          .stag{
+            margin-left: 0;
+            margin-top: 1rem;
+          }
+        }
+        .img{
+          height: 26rem;
+        }
+        .txtbox{
+          height: 42rem;
+        }
+      }
+      .right{
+        display: none;
+      }
+      .btn-boxM{
         @include flexCenter;
         button{
           font-size: 2rem;

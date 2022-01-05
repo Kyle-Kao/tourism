@@ -14,6 +14,10 @@
           <div class="line"></div>
           <div class="txtbox" v-html="datas.DescriptionDetail"></div>
         </div>
+        <div class="btn-boxM">
+          <button class="prev" @click="shown('prev')">上一頁</button>
+          <button class="next" @click="shown('next')">下一頁</button>
+        </div>
         <div class="right">
           <div class="tag">其他景點</div>
           <ul>
@@ -86,7 +90,7 @@ export default {
               this.$router.push({ path: '/landScape/' + this.datas.ScenicSpotID });
             }
           } else {
-            if (index < this.getPlaceDatas.length-1) {
+            if (index < this.getPlaceDatas.length - 1) {
               this.datas = self[index + 1];
               this.$router.push({ path: '/landScape/' + this.datas.ScenicSpotID });
             }

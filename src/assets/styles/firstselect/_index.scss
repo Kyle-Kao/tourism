@@ -112,4 +112,9 @@
       }
     }
   }
+  @media(max-width: 768px){
+    &-box{
+      @include sz(32rem,46rem);
+    }
+  }
 }

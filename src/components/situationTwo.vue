@@ -4,7 +4,11 @@
       <input type="text" placeholder="關鍵字查詢..." class="search-box" />
       <div class="search-icon"><font-awesome-icon icon="search" class="icon" /></div>
     </div>
-    <div class="data">共 <span v-html="cityDatas.length"></span> 筆資料</div>
+    <div class="data">共 
+      <span v-html="cityDatas.length"></span>
+      筆資料
+      <div class="line"></div>
+      </div>
   </div>
 </template>
 

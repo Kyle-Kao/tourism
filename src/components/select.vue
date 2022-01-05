@@ -1,6 +1,6 @@
 <template>
   <select name="city" @change="showValue">
-    <option value="0">— choose an option —</option>
+    <!-- <option value="0">— choose an option —</option> -->
     <option :value="cityData.value" v-for="cityData in cityDatas" :key="cityData.name" v-html="cityData.name"></option>
   </select>
 </template>

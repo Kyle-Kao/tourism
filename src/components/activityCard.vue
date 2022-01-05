@@ -1,5 +1,5 @@
 <template>
-  <router-link class="card" v-for="(activityData, index) in getActivityDatas" :key="index" :to="'/activity/' + activityData.activityID">
+  <router-link class="card" v-for="(activityData, index) in getActivityDatas" :key="index" :to="'/activity/' + activityData.ActivityID">
     <div class="img">
       <img :src="activityData.Picture.PictureUrl1?activityData.Picture.PictureUrl1: ''" :alt="activityData.Picture.PictureDescription1?activityData.Picture.PictureDescription1: '尚未提供'" />
     </div>
