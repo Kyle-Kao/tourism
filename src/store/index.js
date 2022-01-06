@@ -13,10 +13,10 @@ const store = createStore({
 		})
 	],
   state() {
-    return {
-      
-    };
-  },
+		return{
+			searching:'',
+		}
+	},
   mutations: {},
   actions: {},
   getters: {},

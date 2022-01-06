@@ -5,9 +5,9 @@
       <div class="search-icon"><font-awesome-icon icon="search" class="icon" /></div>
     </div>
     <div class="data">共 
-      <span v-html="cityDatas.length"></span>
+      <span> {{ length }} </span>
       筆資料
-      <div class="line"></div>
+      <div class="line" :class="changeClass"></div>
       </div>
   </div>
 </template>
@@ -19,8 +19,17 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
+  props:['length'],
   computed: {
-    ...mapGetters('city', ['cityDatas']),
+    ...mapGetters('city', ['getcheckCategory']),
+    changeClass(){
+      return{
+        'line-blue': this.getcheckCategory == 'landscape',
+        'line-red': this.getcheckCategory == 'restaurant',
+        'line-green': this.getcheckCategory == 'hotel',
+        'line-yellow': this.getcheckCategory == 'activity',
+      }
+    },
   },
 }
 </script>

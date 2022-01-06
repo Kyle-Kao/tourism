@@ -32,7 +32,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import select from '@/components/select.vue';
+import select from '@/components/UI/select.vue';
 export default {
   components: {
     Select: select,

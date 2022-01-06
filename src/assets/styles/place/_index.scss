@@ -44,7 +44,7 @@
       
       .line{
         @include sz(6rem , .3rem);
-        background-color: nth($btn-colors, 1);
+        // background-color: nth($btn-colors, 1);
         margin-top: 2rem;
       }
       .txtbox{

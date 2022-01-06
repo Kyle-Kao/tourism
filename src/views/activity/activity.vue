@@ -4,7 +4,7 @@
     <div class="activity">
       <div class="activity-container">
         <situation-one></situation-one>
-        <situation-two></situation-two>
+        <situation-two :length="getActivityDatas.length"></situation-two>
         <div class="situation3">
           <activity-card></activity-card>
         </div>
@@ -14,14 +14,15 @@
 </template>
 
 <style lang="scss">
-  @import '@/assets/styles/activity/_index.scss';
+  @import '@/assets/styles/category/_activity.scss';
 </style>
 
 <script>
-import header from '@/components/header.vue';
+import header from '@/components/UI/header.vue';
 import activityCard from '@/components/activityCard.vue';
 import situationOne from '@/components/situationOne.vue'
 import situationTwo from '@/components/situationTwo.vue'
+import { mapGetters } from 'vuex';
 export default {
   components: {
     Header: header,
@@ -29,5 +30,8 @@ export default {
     situationOne,
     situationTwo
   },
+  computed:{
+    ...mapGetters('city',['getActivityDatas'])
+  }
 }
 </script>

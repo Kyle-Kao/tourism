@@ -1,6 +1,7 @@
 <template>
   <select name="city" @change="showValue">
-    <!-- <option value="0">— choose an option —</option> -->
+    <option value="0" v-if="!isM">— choose an option —</option>
+    <option value="1" v-if="isM">choose...</option>
     <option :value="cityData.value" v-for="cityData in cityDatas" :key="cityData.name" v-html="cityData.name"></option>
   </select>
 </template>
@@ -8,6 +9,14 @@
 <script>
 import { mapGetters, mapMutations} from 'vuex';
 export default {
+  data(){
+    return{
+      isM: true,
+    }
+  },
+  created() {
+    this.checkM()
+  },
   computed: {
     ...mapGetters('city', ['cityDatas']),
   },
@@ -17,6 +26,13 @@ export default {
     showValue(e) {
       this.getNowCity({city: e.target.value})
     },
+    checkM(){
+      if(window.innerWidth < 768){
+        this.isM = true
+      }else{
+        this.isM = false
+      }
+    }
   },
 };
 </script>

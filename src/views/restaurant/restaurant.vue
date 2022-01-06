@@ -4,7 +4,7 @@
     <div class="restaurant">
       <div class="restaurant-container">
         <situation-one></situation-one>
-        <situation-two></situation-two>
+        <situation-two :length="getRestaurantDatas.length"></situation-two>
         <div class="situation3">
           <restaurant-card></restaurant-card>
         </div>
@@ -14,20 +14,24 @@
 </template>
 
 <style lang="scss">
-  @import '@/assets/styles/restaurant/_index.scss';
+@import '@/assets/styles/category/_restaurant.scss';
 </style>
 
 <script>
-import header from '@/components/header.vue';
+import header from '@/components/UI/header.vue';
 import restaurantCard from '@/components/foodCard.vue';
-import situationOne from '@/components/situationOne.vue'
-import situationTwo from '@/components/situationTwo.vue'
+import situationOne from '@/components/situationOne.vue';
+import situationTwo from '@/components/situationTwo.vue';
+import { mapGetters } from 'vuex';
 export default {
   components: {
     Header: header,
     restaurantCard,
     situationOne,
-    situationTwo
+    situationTwo,
   },
-}
+  computed: {
+    ...mapGetters('city', ['getRestaurantDatas']),
+  },
+};
 </script>

@@ -34,3 +34,15 @@ input{
   background-color: transparent;
   border: none;
 }
+.line-blue{
+  background-color: nth($btn-colors , 1);
+}
+.line-red{
+  background-color: nth($btn-colors , 2);
+}
+.line-green{
+  background-color: nth($btn-colors , 3);
+}
+.line-yellow{
+  background-color: nth($btn-colors , 4);
+}

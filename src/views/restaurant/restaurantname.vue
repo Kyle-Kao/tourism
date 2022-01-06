@@ -11,7 +11,7 @@
           <div class="img">
             <img :src="datas.Picture.PictureUrl1 ? datas.Picture.PictureUrl1 : ''" :alt="datas.Picture.PictureDescription1 ? datas.Picture.PictureDescription1 : '尚未提供'" />
           </div>
-          <div class="line"></div>
+          <div class="line line-red"></div>
           <div class="txtbox" v-html="datas.Description"></div>
         </div>
         <div class="right">
@@ -36,6 +36,7 @@
         </div>
       </div>
     </div>
+    <btn-footer></btn-footer>
   </div>
 </template>
 
@@ -44,11 +45,13 @@
 </style>
 
 <script>
-import header from '@/components/header.vue';
+import header from '@/components/UI/header.vue';
+import BtnFooter from '@/components/UI/BtnFooter.vue';
 import { mapGetters } from 'vuex';
 export default {
   components: {
     Header: header,
+    BtnFooter
   },
   data() {
     return {
@@ -86,7 +89,7 @@ export default {
               this.$router.push({ path: '/restaurant/' + this.datas.RestaurantID });
             }
           } else {
-            if (index < this.getRestaurantDatas.length-1) {
+            if (index < this.getRestaurantDatas.length - 1) {
               this.datas = self[index + 1];
               this.$router.push({ path: '/restaurant/' + this.datas.RestaurantID });
             }
