@@ -46,3 +46,15 @@ input{
 .line-yellow{
   background-color: nth($btn-colors , 4);
 }
+.line-blue-txt{
+  color: nth($btn-colors , 1);
+}
+.line-red-txt{
+  color: nth($btn-colors , 2);
+}
+.line-green-txt{
+  color: nth($btn-colors , 3);
+}
+.line-yellow-txt{
+  color: nth($btn-colors , 4);
+}

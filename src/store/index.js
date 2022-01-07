@@ -17,9 +17,17 @@ const store = createStore({
 			searching:'',
 		}
 	},
-  mutations: {},
+  mutations: {
+		checkingSearch(state, payload){
+			state.searching = payload
+		}
+	},
   actions: {},
-  getters: {},
+  getters: {
+		getSearching(state){
+			return state.searching
+		}
+	},
 });
 
 export default store;

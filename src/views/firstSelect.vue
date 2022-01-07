@@ -6,8 +6,8 @@
         <font-awesome-icon icon="chevron-down" class="icon" />
       </div>
       <div class="search">
-        <input type="text" class="search-box" placeholder="Search…" />
-        <div class="search-icon"><font-awesome-icon icon="search" class="icon" /></div>
+        <input type="text" class="search-box" placeholder="Search…" v-model="message"/>
+        <div class="search-icon" @click="nothingClick"><font-awesome-icon icon="search" class="icon" /></div>
       </div>
       <div class="category">
         <h2>Category…</h2>
@@ -31,18 +31,32 @@
 </style>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 import select from '@/components/UI/select.vue';
 export default {
   components: {
     Select: select,
   },
   computed: {
-    ...mapGetters('city',['linkDatas']),
-    ...mapGetters('city', ['getNowCityName'])
+    ...mapGetters('city',['linkDatas','getNowCityName','getcheckCategory']),
+    ...mapGetters(['getSearching']),
+    message:{
+      get(){
+        return this.getSearching
+      },
+      set(val){
+        this.checkingSearch(val)
+      }
+    }
   },
   methods: {
-    ...mapActions('city', ['getsomething'])
+    ...mapActions('city', ['getsomething']),
+    ...mapMutations(['checkingSearch']),
+    nothingClick(){
+      if(!this.getcheckCategory){
+        alert('先選類別唷')
+      }
+    },
   },
 };
 </script>
