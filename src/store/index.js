@@ -14,7 +14,7 @@ const store = createStore({
 	],
   state() {
 		return{
-			searching:'',
+			searching: null,
 		}
 	},
   mutations: {
