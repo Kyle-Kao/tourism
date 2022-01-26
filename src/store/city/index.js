@@ -1,9 +1,8 @@
-import { getSingleCity, getSingleRestaurant, getSingleHotel,getSingleActivity } from '@/api/module/singleApi.js';
 const cityDatas = {
   namespaced: true,
   state() {
     return {
-      nowCity: '',
+      nowCity: null,
       categoryData: '',
       cityDatas: [
         {
@@ -143,40 +142,7 @@ const cityDatas = {
       state.activityDatas = data
     },
   },
-  actions: {
-    getsomething(context, data) {
-      /** 
-       * type: checkCategory
-       * city: getNowCityName
-       * */ 
-      switch (data.type) {
-        case 'landscape':
-          context.commit('checkCategory', data);
-          getSingleCity(data.city).then((res) => {
-            context.commit('getCity', res.data);
-          });
-          break;
-        case 'restaurant':
-          context.commit('checkCategory', data);
-          getSingleRestaurant(data.city).then((res)=>{
-            context.commit('getRestaurant', res.data)
-          })
-          break;
-        case 'hotel':
-          context.commit('checkCategory', data);
-          getSingleHotel(data.city).then((res)=>{
-            context.commit('getHotel', res.data)
-          })
-          break;
-        case 'activity':
-          context.commit('checkCategory', data);
-          getSingleActivity(data.city).then((res)=>{
-            context.commit('getActivity', res.data)
-          })
-          break;
-      }
-    },
-  },
+  actions: {},
   getters: {
     cityDatas(state) {
       return state.cityDatas;

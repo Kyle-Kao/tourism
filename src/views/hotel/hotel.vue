@@ -6,7 +6,7 @@
         <situation-one></situation-one>
         <situation-two :length="getHotelDatas.length"></situation-two>
         <div class="situation3">
-          <hotel-card></hotel-card>
+          <hotel-card :getHotelDatas="getHotelDatas"></hotel-card>
         </div>
       </div>
     </div>

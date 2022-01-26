@@ -6,7 +6,7 @@
         <situation-one></situation-one>
         <situation-two :length="getActivityDatas.length"></situation-two>
         <div class="situation3">
-          <activity-card></activity-card>
+          <activity-card :getActivityDatas="getActivityDatas" :filterContent="filterDatas"></activity-card>
         </div>
       </div>
     </div>
@@ -31,7 +31,8 @@ export default {
     situationTwo
   },
   computed:{
-    ...mapGetters('city',['getActivityDatas'])
-  }
+    ...mapGetters('city',['getActivityDatas', 'getNowCityName']),
+    ...mapGetters(['getSearching']),
+  },
 }
 </script>

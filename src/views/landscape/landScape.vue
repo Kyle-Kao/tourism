@@ -6,7 +6,7 @@
         <situation-one></situation-one>
         <situation-two :length="getPlaceDatas.length"></situation-two>
         <div class="situation3">
-          <ScapeCard></ScapeCard>
+          <ScapeCard :getPlaceDatas="getPlaceDatas"></ScapeCard>
         </div>
       </div>
     </div>
