@@ -14,25 +14,25 @@
 </template>
 
 <style lang="scss">
-  @import '@/assets/styles/category/_activity.scss';
+@import '@/assets/styles/category/_activity.scss';
 </style>
 
 <script>
 import header from '@/components/UI/header.vue';
 import activityCard from '@/components/activityCard.vue';
-import situationOne from '@/components/situationOne.vue'
-import situationTwo from '@/components/situationTwo.vue'
+import situationOne from '@/components/situationOne.vue';
+import situationTwo from '@/components/situationTwo.vue';
 import { mapGetters } from 'vuex';
 export default {
   components: {
     Header: header,
     activityCard,
     situationOne,
-    situationTwo
+    situationTwo,
   },
-  computed:{
-    ...mapGetters('city',['getActivityDatas', 'getNowCityName']),
+  computed: {
+    ...mapGetters('city', ['getActivityDatas', 'getNowCityName']),
     ...mapGetters(['getSearching']),
   },
-}
+};
 </script>

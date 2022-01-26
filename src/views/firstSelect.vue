@@ -6,12 +6,7 @@
         <font-awesome-icon icon="chevron-down" class="icon" />
       </div>
       <div class="search">
-        <input
-          type="text"
-          class="search-box"
-          placeholder="Search…"
-          v-model="message"
-        />
+        <input type="text" class="search-box" placeholder="Search…" v-model="message" />
         <div class="search-icon" @click="nothingClick">
           <font-awesome-icon icon="search" class="icon" />
         </div>
@@ -40,12 +35,7 @@
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex';
-import {
-  getSingleCity,
-  getSingleRestaurant,
-  getSingleHotel,
-  getSingleActivity,
-} from '@/api/module/singleApi.js';
+import { getSingleCity, getSingleRestaurant, getSingleHotel, getSingleActivity } from '@/api/module/singleApi.js';
 import select from '@/components/UI/select.vue';
 export default {
   components: {
@@ -65,13 +55,7 @@ export default {
   },
   methods: {
     ...mapActions('city', ['getsomething']),
-    ...mapMutations('city', [
-      'checkCategory',
-      'getCity',
-      'getRestaurant',
-      'getHotel',
-      'getActivity',
-    ]),
+    ...mapMutations('city', ['checkCategory', 'getCity', 'getRestaurant', 'getHotel', 'getActivity']),
     ...mapMutations(['checkingSearch']),
     nothingClick() {
       if (!this.getcheckCategory) {
@@ -91,7 +75,7 @@ export default {
               getSingleCity(data.city).then((res) => {
                 let f = res.data.filter((data) => {
                   return data.ScenicSpotName.indexOf(this.getSearching) > -1;
-                })
+                });
                 this.getCity(f);
               });
               break;
@@ -100,7 +84,7 @@ export default {
               getSingleRestaurant(data.city).then((res) => {
                 let f = res.data.filter((data) => {
                   return data.RestaurantName.indexOf(this.getSearching) > -1;
-                })
+                });
                 this.getRestaurant(f);
               });
               break;
@@ -109,7 +93,7 @@ export default {
               getSingleHotel(data.city).then((res) => {
                 let f = res.data.filter((data) => {
                   return data.HotelName.indexOf(this.getSearching) > -1;
-                })
+                });
                 this.getHotel(f);
               });
               break;
@@ -118,7 +102,7 @@ export default {
               getSingleActivity(data.city).then((res) => {
                 let f = res.data.filter((data) => {
                   return data.ActivityName.indexOf(this.getSearching) > -1;
-                })
+                });
                 this.getActivity(f);
               });
               break;
@@ -126,7 +110,6 @@ export default {
         } else {
           switch (data.type) {
             case 'landscape':
-              console.log(data);
               this.checkCategory(data);
               getSingleCity(data.city).then((res) => {
                 this.getCity(res.data);

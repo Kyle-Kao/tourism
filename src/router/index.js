@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+// import { getSingleCity, getSingleRestaurant, getSingleHotel, getSingleActivity } from '@/api/module/singleApi.js';
 // import store from '../store/index.js';
 // import store from '../store/city/singleData.js';
 
@@ -59,10 +60,9 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//     console.log(to.params.place)
-//     store.commit("single/getCity",{city: to.params.place})
-//     next()
-//   });
+router.beforeEach((to, from, next) => {
+  // console.log(to);
+  next();
+});
 
 export default router;

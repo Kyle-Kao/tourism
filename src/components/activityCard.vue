@@ -1,22 +1,9 @@
 <template>
-  <router-link
-    class="card"
-    v-for="(activityData, index) in getActivityDatas"
-    :key="index"
-    :to="'/activity/' + activityData.ActivityID"
-  >
+  <router-link class="card" v-for="(activityData, index) in getActivityDatas" :key="index" :to="'/activity/' + activityData.ActivityID">
     <div class="img">
       <img
-        :src="
-          activityData.Picture.PictureUrl1
-            ? activityData.Picture.PictureUrl1
-            : ''
-        "
-        :alt="
-          activityData.Picture.PictureDescription1
-            ? activityData.Picture.PictureDescription1
-            : '尚未提供'
-        "
+        :src="activityData.Picture.PictureUrl1 ? activityData.Picture.PictureUrl1 : ''"
+        :alt="activityData.Picture.PictureDescription1 ? activityData.Picture.PictureDescription1 : '尚未提供'"
       />
     </div>
     <div class="textbox">
@@ -38,26 +25,9 @@
 import { mapGetters } from 'vuex';
 export default {
   props: ['getActivityDatas', 'filterContent', 'isFilter'],
-  // props:{
-  //   getActivityDatas: Array,
-  //   filterContent: Object
-  // },
-  // created(){
-  //   this.log()
-  // },
-  // data(){
-  //   return{
-  //     isFilter: this.filterContent['ActivityID'] || false
-  //   }
-  // },
   computed: {
     ...mapGetters('city', ['getNowCityName']),
     ...mapGetters(['getSearching']),
   },
-  // methods: {
-  //   log(){
-  //     console.log('123: '+this.filterContent.length)
-  //   },
-  // },
 };
 </script>
