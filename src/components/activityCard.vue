@@ -22,12 +22,7 @@
 </style>
 
 <script>
-import { mapGetters } from 'vuex';
 export default {
-  props: ['getActivityDatas', 'filterContent', 'isFilter'],
-  computed: {
-    ...mapGetters('city', ['getNowCityName']),
-    ...mapGetters(['getSearching']),
-  },
+  props: ['getActivityDatas'],
 };
 </script>

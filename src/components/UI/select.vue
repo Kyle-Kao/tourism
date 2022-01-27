@@ -19,7 +19,6 @@ export default {
   },
   computed: {
     ...mapGetters('city', ['cityDatas', 'getNowCityName']),
-    ...mapGetters(['getSearching']),
   },
   methods: {
     ...mapMutations('city', ['getNowCity', 'getCity', 'getRestaurant', 'getHotel', 'getActivity']),

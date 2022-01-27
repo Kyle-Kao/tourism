@@ -25,6 +25,7 @@ export default {
   },
   computed: {
     ...mapGetters('city', ['linkDatas', 'getcheckCategory']),
+    ...mapGetters(['getSearching']),
   },
   methods: {
     ...mapMutations('city', ['getCity', 'getRestaurant', 'getHotel', 'getActivity']),
