@@ -22,7 +22,8 @@ import header from '@/components/UI/header.vue';
 import hotelCard from '@/components/hotelCard.vue';
 import situationOne from '@/components/situationOne.vue'
 import situationTwo from '@/components/situationTwo.vue'
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
+import { getSingleHotel } from '@/api/module/singleApi.js';
 export default {
   components: {
     Header: header,
@@ -31,7 +32,28 @@ export default {
     situationTwo
   },
   computed:{
-    ...mapGetters('city',['getHotelDatas'])
-  }
+    ...mapGetters('city',['getHotelDatas', 'getNowCityName']),
+    ...mapGetters(['getSearching']),
+  },
+  created(){
+    this.getData()
+  },
+  methods: {
+    ...mapMutations('city', ['getHotel']),
+    getData() {
+      if (this.getSearching) {
+        getSingleHotel(this.getNowCityName).then((res) => {
+          let f = res.data.filter((data) => {
+            return data.HotelName.indexOf(this.getSearching) > -1;
+          });
+          this.getHotel(f);
+        });
+      } else {
+        getSingleHotel(this.getNowCityName).then((res) => {
+          this.getHotel(res.data);
+        });
+      }
+    },
+  },
 }
 </script>

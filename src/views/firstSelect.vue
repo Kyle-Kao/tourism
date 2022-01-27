@@ -20,7 +20,7 @@
             :to="getNowCityName ? data.url : ''"
             v-html="data.cnName"
             class="card"
-            @click="getContent({ type: data.name, city: getNowCityName })"
+            @click="checkCityValue({type: data.name})"
           >
           </router-link>
         </div>
@@ -35,7 +35,6 @@
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex';
-import { getSingleCity, getSingleRestaurant, getSingleHotel, getSingleActivity } from '@/api/module/singleApi.js';
 import select from '@/components/UI/select.vue';
 export default {
   components: {
@@ -55,89 +54,20 @@ export default {
   },
   methods: {
     ...mapActions('city', ['getsomething']),
-    ...mapMutations('city', ['checkCategory', 'getCity', 'getRestaurant', 'getHotel', 'getActivity']),
+    ...mapMutations('city', ['checkCategory']),
     ...mapMutations(['checkingSearch']),
     nothingClick() {
       if (!this.getcheckCategory) {
         alert('先選類別唷');
+        return
       }
     },
-    getContent(data) {
-      /**
-       * type: checkCategory
-       * city: getNowCityName
-       * */
-      if (data['city']) {
-        if (this.getSearching) {
-          switch (data.type) {
-            case 'landscape':
-              this.checkCategory(data);
-              getSingleCity(data.city).then((res) => {
-                let f = res.data.filter((data) => {
-                  return data.ScenicSpotName.indexOf(this.getSearching) > -1;
-                });
-                this.getCity(f);
-              });
-              break;
-            case 'restaurant':
-              this.checkCategory(data);
-              getSingleRestaurant(data.city).then((res) => {
-                let f = res.data.filter((data) => {
-                  return data.RestaurantName.indexOf(this.getSearching) > -1;
-                });
-                this.getRestaurant(f);
-              });
-              break;
-            case 'hotel':
-              this.checkCategory(data);
-              getSingleHotel(data.city).then((res) => {
-                let f = res.data.filter((data) => {
-                  return data.HotelName.indexOf(this.getSearching) > -1;
-                });
-                this.getHotel(f);
-              });
-              break;
-            case 'activity':
-              this.checkCategory(data);
-              getSingleActivity(data.city).then((res) => {
-                let f = res.data.filter((data) => {
-                  return data.ActivityName.indexOf(this.getSearching) > -1;
-                });
-                this.getActivity(f);
-              });
-              break;
-          }
-        } else {
-          switch (data.type) {
-            case 'landscape':
-              this.checkCategory(data);
-              getSingleCity(data.city).then((res) => {
-                this.getCity(res.data);
-              });
-              break;
-            case 'restaurant':
-              this.checkCategory(data);
-              getSingleRestaurant(data.city).then((res) => {
-                this.getRestaurant(res.data);
-              });
-              break;
-            case 'hotel':
-              this.checkCategory(data);
-              getSingleHotel(data.city).then((res) => {
-                this.getHotel(res.data);
-              });
-              break;
-            case 'activity':
-              this.checkCategory(data);
-              getSingleActivity(data.city).then((res) => {
-                this.getActivity(res.data);
-              });
-              break;
-          }
-        }
-      } else if (data['city'] == null) {
+    checkCityValue(data) {
+      if (this.getNowCityName == null) {
         alert('請選擇地區');
         return;
+      }else{
+        this.checkCategory(data)
       }
     },
   },

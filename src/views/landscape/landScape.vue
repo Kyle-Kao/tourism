@@ -22,7 +22,8 @@ import header from '@/components/UI/header.vue';
 import scapeCard from '@/components/scapeCard.vue';
 import situationOne from '@/components/situationOne.vue'
 import situationTwo from '@/components/situationTwo.vue'
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
+import { getSingleCity } from '@/api/module/singleApi.js';
 export default {
   components: {
     Header: header,
@@ -31,7 +32,28 @@ export default {
     situationTwo
   },
   computed:{
-    ...mapGetters('city', ['getPlaceDatas']),
+    ...mapGetters('city', ['getPlaceDatas', 'getNowCityName']),
+    ...mapGetters(['getSearching']),
+  },
+  created(){
+    this.getData()
+  },
+  methods: {
+    ...mapMutations('city', ['getCity']),
+    getData() {
+      if (this.getSearching) {
+        getSingleCity(this.getNowCityName).then((res) => {
+          let f = res.data.filter((data) => {
+            return data.ScenicSpotName.indexOf(this.getSearching) > -1;
+          });
+          this.getCity(f);
+        });
+      } else {
+        getSingleCity(this.getNowCityName).then((res) => {
+          this.getCity(res.data);
+        });
+      }
+    },
   },
 };
 </script>
