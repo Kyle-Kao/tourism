@@ -7,9 +7,7 @@
   </footer>
 </template>
 
-<style lang="scss">
-@import '@/assets/styles/components/UI/_BtnFooter.scss';
-</style>
+<style lang="scss" src="@/assets/styles/components/UI/_BtnFooter.scss"></style>
 
 <script>
 import { mapGetters } from 'vuex';

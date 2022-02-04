@@ -40,9 +40,7 @@
   </div>
 </template>
 
-<style lang="scss">
-@import '@/assets/styles/place/_index.scss';
-</style>
+<style lang="scss" src="@/assets/styles/place/_index.scss"></style>
 
 <script>
 import header from '@/components/UI/header.vue';

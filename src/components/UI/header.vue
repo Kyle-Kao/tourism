@@ -4,6 +4,4 @@
   </div>
 </template>
 
-<style lang="scss">
-  @import "@/assets/styles/components/UI/_header.scss";
-</style>
+<style lang="scss" src="@/assets/styles/components/UI/_header.scss"></style>

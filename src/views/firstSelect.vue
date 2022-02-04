@@ -1,25 +1,26 @@
 <template>
-  <div class="Firstselect">
-    <div class="Firstselect-box">
-      <div class="area">
-        <Select id="city"></Select>
-        <font-awesome-icon icon="chevron-down" class="icon" />
+<!-- css in js -->
+  <div :class="$style.Firstselect">
+    <div :class="$style['Firstselect-box']">
+      <div :class="$style.area">
+        <Select id="city" :class="$style.city"></Select>
+        <font-awesome-icon icon="chevron-down" :class="$style.icon" />
       </div>
-      <div class="search">
-        <input type="text" class="search-box" placeholder="Search…" v-model="message" />
-        <div class="search-icon" @click="nothingClick">
-          <font-awesome-icon icon="search" class="icon" />
+      <div :class="$style.search">
+        <input type="text" :class="$style['search-box']" placeholder="Search…" v-model="message" />
+        <div :class="$style['search-icon']" @click="nothingClick">
+          <font-awesome-icon icon="search" :class="$style.icon" />
         </div>
       </div>
-      <div class="category">
+      <div :class="$style.category">
         <h2>Category…</h2>
-        <div class="category-box">
+        <div :class="$style['category-box']">
           <router-link
             v-for="data in linkDatas"
             :key="data.name"
             :to="getNowCityName ? data.url : ''"
             v-html="data.cnName"
-            class="card"
+            :class="$style.card"
             @click="checkCityValue({type: data.name})"
           >
           </router-link>
@@ -29,9 +30,7 @@
   </div>
 </template>
 
-<style lang="scss">
-@import '@/assets/styles/Firstselect/_index.scss';
-</style>
+<style lang="scss" src="@/assets/styles/firstselect/index.scss" module></style>
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex';
@@ -39,6 +38,9 @@ import select from '@/components/UI/select.vue';
 export default {
   components: {
     Select: select,
+  },
+  created() {
+    this.log()
   },
   computed: {
     ...mapGetters('city', ['linkDatas', 'getNowCityName', 'getcheckCategory']),
@@ -53,6 +55,9 @@ export default {
     },
   },
   methods: {
+    log(){
+    console.log(this.$style)
+    },
     ...mapActions('city', ['getsomething']),
     ...mapMutations('city', ['checkCategory']),
     ...mapMutations(['checkingSearch']),

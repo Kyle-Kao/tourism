@@ -1,0 +1,121 @@
+@import "@/assets/styles/main.scss";
+.Firstselect {
+  background-color: $txt-color;
+  @include sz(100%, 100vh);
+  position: relative;
+  &-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include sz(50rem, 56rem);
+    background-color: $light-colorbg;
+    border-radius: 2rem;
+    box-shadow: 0 1rem 1rem $shadow-color;
+    @include flexCenter;
+    flex-direction: column;
+  }
+  .area {
+    width: 30rem;
+    position: relative;
+    .city {
+      color: $txt-darkcolor;
+      appearance: none;
+      width: 100%;
+      border-radius: 1rem;
+      background-color: $light-colorbg;
+      padding: 1rem;
+      font-size: 2rem;
+      border: none;
+      box-shadow: inset 0 1px 0 #ffffff, 0 0.5rem 0.5rem $shadow-color;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: 2rem;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: $icon-color;
+    }
+  }
+  .search{
+    @include sz(30rem , auto);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: inset 0 1px 0 #ffffff, 0 0.5rem 0.5rem $shadow-color;
+    margin-top: 3rem;
+    @include flexCenter;
+    justify-content: space-between;
+    &-box{
+      font-size: 2rem;
+      color: $txt-darkcolor;
+      padding: 1rem 3rem 1rem 1rem;
+      box-shadow: inset  0px 0rem .8rem $shadow-color;
+      border-radius: 1rem;
+      width: 80%;
+    }
+    &-icon{
+      @include sz(3.5rem);
+      border-radius: 50%;
+      box-shadow: 0 .2rem .2rem $shadow-color;
+      @include flexCenter;
+      .icon{
+        font-size: 2rem;
+        color: $icon-color;
+        cursor: pointer;
+      }
+    }
+  }
+  .category{
+    @include flexCenter;
+    flex-direction: column;
+    padding: 1rem 1.5rem 2rem;
+    margin-top: 3rem;
+    border-radius: 1rem;
+    background-color: $light-colorbg;
+    box-shadow: inset 0 1px 0 #ffffff, 0 0.5rem 0.5rem $shadow-color;
+    max-width: 30rem;
+    h2{
+      font-size: 2.2rem;
+      color: $txt-darkcolor;
+      font-weight: normal;
+      align-self: flex-start;
+    }
+    &-box{
+      border-radius: 1rem;
+      margin-top: 1.5rem;
+      @include flexCenter;
+      flex-wrap: wrap;
+      width: 80%;
+      .card{
+        flex: 40%;
+        text-align: center;
+        font-size: 1.8rem;
+        color: $txt-color;
+        box-shadow: inset 0 1px 0 #ffffff, 0 0.5rem 0.5rem $shadow-color;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-image: linear-gradient(to bottom, #efe9e5, #ded9c8);
+        cursor: pointer;
+        transition: all .5s;
+        &:hover{
+          color: $txt-darkcolor;
+          transform: translateY(-.5rem);
+        }
+        &:nth-of-type(3),&:nth-of-type(4){
+          margin-top: 2rem;
+        }&:nth-of-type(2),&:nth-of-type(4){
+          margin-left: 2rem;
+        }
+      }
+    }
+  }
+  @media(max-width: 768px){
+    &-box{
+      @include sz(32rem,46rem);
+    }
+  }
+}

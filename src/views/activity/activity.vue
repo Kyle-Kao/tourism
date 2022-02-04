@@ -13,9 +13,7 @@
   </div>
 </template>
 
-<style lang="scss">
-@import '@/assets/styles/category/_activity.scss';
-</style>
+<style lang="scss" src="@/assets/styles/category/_activity.scss"></style>
 
 <script>
 import header from '@/components/UI/header.vue';

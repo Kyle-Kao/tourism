@@ -11,9 +11,7 @@
   </div>
 </template>
 
-<style lang="scss">
-@import '@/assets/styles/components/_situation1.scss';
-</style>
+<style lang="scss" src="@/assets/styles/components/_situation1.scss"></style>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';

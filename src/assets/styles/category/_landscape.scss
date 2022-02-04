@@ -1,3 +1,4 @@
+@import "@/assets/styles/main.scss";
 .landscape {
   @include sz(100%, 100vh);
   background-color: $light-colorbg;

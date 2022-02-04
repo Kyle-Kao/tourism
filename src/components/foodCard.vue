@@ -16,9 +16,7 @@
   </router-link>
 </template>
 
-<style lang="scss">
-@import '@/assets/styles/components/_place.scss';
-</style>
+<style lang="scss" src="@/assets/styles/components/_place.scss"></style>
 
 <script>
 export default {

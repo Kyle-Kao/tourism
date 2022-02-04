@@ -6,11 +6,12 @@ module.exports = {
     }
   },
   css: {
-    loaderOptions:{
-      sass: {
-        additionalData: `@import "@/assets/styles/main.scss";`
-      }
-    }
+    // modules: true,
+    // loaderOptions:{
+    //   sass: {
+    //     additionalData: `@import "@/assets/styles/main.module.scss";`
+    //   }
+    // }
   },
   publicPath: process.env.NODE_ENV === 'production' ?'/tourism/' : '/'
 };
